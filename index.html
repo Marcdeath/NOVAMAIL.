@@ -1,110 +1,134 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta,http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Nova Mail</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Nova Mail</title>
 </head>
 <body>
-                  <nav class="navbar">
-        <div class="logo"><h1>Nova Mail</h1></div>
-        <ul class="menu">
-            <li><a href="#" class="active">Accueil</a></li>
-            <li><a href="#" class="fa-solid fa-user"></a></li>
-            <li><a href="#" class="fa-solid fa-cart-shopping"></a></li>
-        </ul>
-    </nav>
-<br>
-<div class="main-container">
-            <div class="email-box">
-                <h1><strong> Générateur d'e-mail temporaire </strong></h1>
-              
-              <input type="text" id="emailAddress" readonly>
-            <button class="copy-button" onclick="copyEmail()">📋</button>
-            <br>
-            <br>
-            <br>
-          <h5 class="titre-principal">Oubliez le spam, la publicité, le piratage et les attaques des robots,<br> l’e-mail temporaire et anonyme c’est l'absence d'engagement et de <br>risque. Temp Mail fournit une adresse e-mail anonyme, gratuite et <br> temporaire.</h5>
-    
-           <br>
-           <div class="button-container">
-            <button class="custom-button">
-              <span class="icon">📋</span> Copier
-            </button>
-            <button class="custom-button">
-              <span class="icon">🔄</span> Générer
-            </button>
-            <button class="custom-button">
-              <span class="icon">✍️</span> Retour
-            </button>
-            <button class="custom-button">
-              <span class="icon">❌</span> Supprimer
-            </button>
-          </div>
-          
-          </div>
-       
-<br>
-<div class="inbox">
-  <div class="inbox-header">
-    <span>EXPÉDITEUR</span>
-    <span>OBJET</span>
-    <span>APERÇU</span>
+  <nav class="navbar">
+    <div class="logo"><h1>Nova Mail</h1></div>
+    <ul class="menu" id="nav-menu">
+      <li><a href="#" class="active">Accueil</a></li>
+      <li><a href="#" class="fa-solid fa-user"></a></li>
+    </ul>
+  </nav>
+
+  <br>
+  <div class="main-container">
+    <div class="email-box">
+      <h1><strong> Générateur d'e-mail temporaire </strong></h1>
+
+      <input type="text" id="emailAddress" readonly>
+      <button class="copy-button" onclick="copyEmail()">📋</button>
+      <div id="timer">10:00</div>
+
+      <br><br><br>
+      <h5 class="titre-principal">
+        Oubliez le spam, la publicité, le piratage et les attaques des robots,<br>
+        l’e-mail temporaire et anonyme c’est l'absence d'engagement et de <br>
+        risque. Temp Mail fournit une adresse e-mail anonyme, gratuite et <br>
+        temporaire.
+      </h5>
+
+      <br>
+      <div class="button-container">
+        <button class="custom-button" onclick="copyEmail()">
+          <span class="icon">📋</span> Copier
+        </button>
+        <button class="custom-button" onclick="generateEmail()">
+          <span class="icon">🔄</span> Générer
+        </button>
+        <button class="custom-button" onclick="history.back()">
+          <span class="icon">✍️</span> Retour
+        </button>
+        <button class="custom-button" onclick="deleteEmail(document.getElementById('emailAddress').value)">
+          <span class="icon">❌</span> Supprimer
+        </button>
+      </div>
+    </div>
+
+    <br>
+    <div class="inbox">
+      <div class="inbox-header">
+        <span>EXPÉDITEUR</span>
+        <span>OBJET</span>
+        <span>APERÇU</span>
+      </div>
+      <div class="inbox-content" id="inboxContent">
+        <div class="inbox-empty">
+          <div class="inbox-icon">📩</div>
+          <h2>Votre boîte de réception est vide</h2>
+          <p>En attente d'e-mails entrants</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="content2">    
+        <h1> Nova Mail</h1>
+        <h2>E-mail temporaire anonyme gratuit</h2><br>
+        <h3>Pourquoi l'utiliser ?</h3><br>
+        <p>
+          Vous souhaitez peut-être vous inscrire sur un site qui exige une adresse e-mail pour l'envoi d'e-mails de validation. <br>
+          Et vous ne voulez peut-être pas divulguer votre véritable adresse e-mail et vous retrouver sur des listes de spam.<br>
+          C'est pratique et jetable. Et c'est gratuit. Profitez-en !
+        </p>
+      </div>
+    </section>
   </div>
-  <div class="inbox-empty">
-    <div class="inbox-icon">📩</div>
-    <h2>Votre boîte de réception est vide</h2>
-    <p>En attente d'e-mails entrants</p>
-  </div>
-    
+
+  <br>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 NOVA MAIL. Tous droits réservés.</p>
+      <div class="footer-links">
+        <a href="#">Accueil</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+        <a href="#">Mentions légales</a>
+      </div>
+    </div>
+  </footer>
   <script>
-    function generateEmail() {
-      // Appelle l'API pour générer un mail (backend)
-      fetch('/generate')
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('active');
+    }
+
+    function refreshInbox(email) {
+      fetch(`http://localhost:3000/api/messages/${email}`)
         .then(res => res.json())
-        .then(data => {
-          document.getElementById("emailAddress").value = data.email;
-          document.getElementById("inbox").innerHTML = "<p>Boîte vide pour l’instant...</p>";
+        .then(messages => {
+          const inboxContent = document.getElementById("inboxContent");
+          inboxContent.innerHTML = "";
+
+          if (messages.length === 0) {
+            inboxContent.innerHTML = `
+              <div class="inbox-empty">
+                <div class="inbox-icon">📩</div>
+                <h2>Votre boîte de réception est vide</h2>
+                <p>En attente d'e-mails entrants</p>
+              </div>`;
+            return;
+          }
+
+          messages.forEach(msg => {
+            const item = document.createElement("div");
+            item.classList.add("inbox-item");
+            item.innerHTML = `
+              <span>${msg.sender}</span>
+              <span>${msg.subject}</span>
+              <span>${msg.preview}</span>`;
+            inboxContent.appendChild(item);
+          });
         });
     }
   </script>
-    <hr>
-  
-<section class="content">
-
-            <div class="content2">    
-         <h1> Nova Mail</h1>
-
-           <h2>E-mail temporaire anonyme gratuit</h2><br>
-
-           <h3>Pourquoi l'utiliser ?</h3> <br>
-            
-            <p>Vous souhaitez peut-être vous inscrire sur un site qui exige une adresse e-mail pour l'envoi d'e-mails de validation. <br>Et vous ne voulez peut-être pas divulguer votre véritable adresse e-mail et vous retrouver sur des listes de spam.<br> C'est pratique et jetable. Et c'est gratuit. Profitez-en !
-            
-            </p>
-</div>  
-</div>
-
-        </section>
-</div>       
-    <br>
-    
-    <footer class="site-footer">
-                    <div class="footer-content">
-                      <p>&copy; 2025 NOVA MAIL. Tous droits réservés.</p>
-                      <div class="footer-links">
-                        <a href="#">Accueil</a>
-                        <a href="#">À propos</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Mentions légales</a>
-                      </div>
-                    </div>
-                  </footer>
-                  
+  <script src="script.js"></script>
 </body>
-
-</html> 
+</html>
